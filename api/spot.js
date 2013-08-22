@@ -21,11 +21,11 @@ db.open(function(err, db) {
 
 exports.findById = function(req, res) {
     var id = req.params.id;
-    console.log('Retrieving spot: ' + id);
-    res.send('');
+    console.log('Retrieving spot with _id = [ ' + id + ']');
     db.collection('spots', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
-            res.send({spot:item});
+            // Wrap the location in a root element called "spot".
+            res.json({spot:item});
         });
     });
 };
