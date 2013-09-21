@@ -1,5 +1,5 @@
 var express = require('express');
-var spot = require('./api/spot');
+var maps = require('./api/maps');
 var app = express();
 //app.use(express.logger());
 
@@ -30,11 +30,18 @@ var allowCrossDomain = function(req, res, next) {
 app.use(allowCrossDomain);
 
 //API
-app.get('/api/spots',spot.findAll);
+/*app.get('/api/spots',spot.findAll);
 app.get('/api/spots/:id',spot.findById);
 app.post('/api/spots',spot.add);
 app.put('/api/spots/:id',spot.update);
-app.delete('/api/spots/:id',spot.delete);
+app.delete('/api/spots/:id',spot.delete);*/
+
+app.get('/api/maps',maps.findAll);
+app.get('/api/maps/:id',maps.findById);
+app.post('/api/maps',maps.add);
+app.put('/api/maps/:id',maps.update);
+app.delete('/api/maps/:id',maps.delete);
+
 
 var port = process.env.PORT || 5001;
 app.listen(port, function() {
